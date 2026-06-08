@@ -171,7 +171,8 @@
             termlist = document.createElement("ul");
             for (let i = 0; i < data.term.length; i++) { //creates the terms
                 let term = document.createElement('li');
-                term.innerHTML = "Term "+Number(i+1);
+                term.innerHTML = "Term "+Number(i+1)+" ▲";
+                term.style.cursor = "pointer"
                 term.setAttribute('term',i);
                 term.addEventListener('click',() => { //term click event
                     if (event.target === event.currentTarget && !term.getAttribute("showingchapterlist")) {
