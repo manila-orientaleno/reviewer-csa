@@ -8,7 +8,7 @@
     <style>
     body {
         font-family: 'Roboto', sans-serif;
-        background-color: #f0f0f0;
+        background-color: whitesmoke;
         margin: 0;
     }
     .title {
@@ -24,7 +24,7 @@
         vertical-align:middle;
         margin-bottom:10px;
         margin-top:10px;
-        transition:padding 1s
+        transition:transform 0.3s ease;
     }
     .working{
         font-weight:bold;
@@ -33,9 +33,8 @@
         text-align:center;
     }
     .subject:hover{
-        padding:3%;
-        transition:padding 1s;
         cursor:pointer;
+        transform:scale(1.2);
     }
     @media (max-width: 600px) {
         table, thead, tbody, tr{
@@ -72,9 +71,21 @@
         }
     }
     .Filipino{
-        background-image:url("https://upload.wikimedia.org/wikipedia/commons/3/3f/Flag_of_the_Philippines_%28vertical_display%29.svg");
+        background-image:url("phil-flag.jpg");
         background-size:cover;
         background-repeat: no-repeat;
+    }
+    .English{
+        background-image:url("england.jpg");
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position:center;
+    }
+    .Science{
+        background-image:url("science.jpg");
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position:center;
     }
     </style>
 </head>
@@ -83,7 +94,7 @@
     <div style="overflow-x:auto;">
     <table style="border-collapse:collapse; width:100%">
         <tr class="subjectparent"> <!--language et cetera-->
-            <td class="subject">
+            <td class="subject English">
                 <h1 class="center">English</h1>
                 <ul>
                     <li class="working">Term 1</li>
@@ -99,7 +110,7 @@
                     <li class="strike">Term 3</li>
                 </ul>
             </td>
-            <td class="subject">
+            <td class="subject Science">
                 <h1 class="center">Science</h1>
                 <ul>
                     <li class="working">Term 1</li>
