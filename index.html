@@ -161,12 +161,13 @@
         var table = document.getElementById("Tableholder");
         var reviewer = document.getElementById("reviewer");
         var rTitle, rPG, termlist, chapterlist, chaptertext; //Reviewers Title and Paragraph, which will accept HTML as input, that would be a security risk but not really because you cant hack anything here
+        var showingchapter=false;
         async function review(given){
             table.remove();
             var getJSON = await fetch(given+'.json');
             data = await getJSON.json()
             console.log(data);
-            reviewer.innerHTML="<div id='chaptertext'></div><h2 class='center'>"+data.Title+"</h1>"
+            reviewer.innerHTML="</div><h2 class='center'>"+data.Title+"</h1>"
             termlist = document.createElement("ul");
             for (let i = 0; i < data.term.length; i++) { //creates the terms
                 let term = document.createElement('li');
@@ -186,13 +187,23 @@
                             chapterlistpart.classList.add('chapterlistparts')
                             chapterlistpart.addEventListener('click',() => {
                                 if (event.target === event.currentTarget && !chapterlistpart.getAttribute("showingchaptertext")){
-                                    console.log('Chapter list '+chapindex+' was clicked')
-                                    chapterlistpart.setAttribute("showingchaptertext",true);
-                                    chaptertext = document.createElement('div');
-                                    chaptertext.style.width='74%';
+                                    if(showingchapter==true){//if different chapter, change text
+                                        chapterlistpart.setAttribute("showingchaptertext",true);
+                                        chaptertext.innerHTML = data.term[i].Chapters[chapindex].htmltext
+                                    } else {
+                                        chaptertext = document.createElement('div');
+                                    }
+                                    chaptertext.style.width='63%';
                                     chaptertext.style.display="inline-block"
+                                    chaptertext.style.marginRight='10%'
+                                    chapterlistpart.setAttribute("showingchaptertext",true);
                                     chaptertext.innerHTML = data.term[i].Chapters[chapindex].htmltext
                                     termlist.style.marginRight='3.8%' // RETURNS THE LIST BACK TO LEFT
+                                    console.log('Chapter list '+chapindex+' was clicked')
+                                    showingchapter=true;
+                                    [...chapterlist.children].filter(child => child !== chapterlistpart).forEach(sibling=>{
+                                        sibling.removeAttribute("showingchaptertext")
+                                    })
                                     reviewer.appendChild(chaptertext)
                                 }
                             })
