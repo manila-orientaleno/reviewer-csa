@@ -23,7 +23,7 @@
         border-radius:10px;
         vertical-align:middle;
         margin-bottom:10px;
-        margin-top:10px;
+        margin-top:20px;
         transition:transform 0.3s ease;
     }
     .working{
@@ -68,6 +68,7 @@
             width:75%;
             margin-left:25%;
             margin-right:25%;
+            height:400px;
         }
     }
     .Filipino{
@@ -87,14 +88,40 @@
         background-repeat: no-repeat;
         background-position:center;
     }
+    .Math{
+        background-image:url("math.jpg");
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position:center;
+    }
+    .unhidden.hide{
+        opacity:0;
+        transform: scale(0.1);
+    }
+    .unhidden{
+        opacity:1;
+        transform:scale(1);
+        transition:opacity 0.3s ease, transform 0.3s ease;
+    }
+    .chapterlistparts {
+        opacity: 0;
+        transform: translateY(-15px);
+        transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    .chapterlistparts.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
     </style>
 </head>
 <body>
     <h1 class="title">The Augustine Reviewer</h1>
-    <div style="overflow-x:auto;">
+    <div id="reviewer" class="center"></div>
+    <div style="overflow-x:auto;" class="unhidden" id="Tableholder">
     <table style="border-collapse:collapse; width:100%">
         <tr class="subjectparent"> <!--language et cetera-->
-            <td class="subject English">
+            <td class="subject English" onclick="subject('English')">
                 <h1 class="center">English</h1>
                 <ul>
                     <li class="working">Term 1</li>
@@ -118,7 +145,7 @@
                     <li class="strike">Term 3</li>
                 </ul>
             </td>
-            <td class="subject">
+            <td class="subject Math">
                 <h1 class="center">Math</h1>
                 <ul>
                     <li class="working">Term 1</li>
@@ -129,5 +156,73 @@
         </tr>
     </table>
     </div>
+    <script>
+        
+        var table = document.getElementById("Tableholder");
+        var reviewer = document.getElementById("reviewer");
+        var rTitle, rPG, termlist, chapterlist, chaptertext; //Reviewers Title and Paragraph, which will accept HTML as input, that would be a security risk but not really because you cant hack anything here
+        async function review(given){
+            table.remove();
+            var getJSON = await fetch(given+'.json');
+            data = await getJSON.json()
+            console.log(data);
+            reviewer.innerHTML="<div id='chaptertext'></div><h2 class='center'>"+data.Title+"</h1>"
+            termlist = document.createElement("ul");
+            for (let i = 0; i < data.term.length; i++) { //creates the terms
+                let term = document.createElement('li');
+                term.innerHTML = "Term "+Number(i+1);
+                term.setAttribute('term',i);
+                term.addEventListener('click',() => { //term click event
+                    if (event.target === event.currentTarget && !term.getAttribute("showingchapterlist")) {
+                        console.log('term '+i+' was clicked');
+                        term.setAttribute('showingchapterlist', true); //prevents duplication of chapters
+                        chapterlist = document.createElement("ul")
+                        for (let chapindex = 0; chapindex < data.term[i].Chapters.length; chapindex++) { //creates chapters
+                            let chaptername = data.term[i].Chapters[chapindex].Title
+                            let chapterlistpart = document.createElement("li");
+                            chapterlistpart.innerHTML = chaptername;
+                            chapterlistpart.style.paddingLeft='0'
+                            chapterlistpart.style.listStylePosition='inside'
+                            chapterlistpart.classList.add('chapterlistparts')
+                            chapterlistpart.addEventListener('click',() => {
+                                if (event.target === event.currentTarget && !chapterlistpart.getAttribute("showingchaptertext")){
+                                    console.log('Chapter list '+chapindex+' was clicked')
+                                    chapterlistpart.setAttribute("showingchaptertext",true);
+                                    chaptertext = document.createElement('div');
+                                    chaptertext.style.width='74%';
+                                    chaptertext.style.display="inline-block"
+                                    chaptertext.innerHTML = data.term[i].Chapters[chapindex].htmltext
+                                    termlist.style.marginRight='3.8%' // RETURNS THE LIST BACK TO LEFT
+                                    reviewer.appendChild(chaptertext)
+                                }
+                            })
+                            chapterlist.appendChild(chapterlistpart)
+                            setTimeout(() => {
+                                chapterlistpart.classList.add('show')
+                            }, 10);
+                        }
+                        term.appendChild(chapterlist); //add chapter list
+                    }
+                })
+                termlist.appendChild(term); //add term list
+            }
+            termlist.style.width="20%";
+            termlist.style.border="2px black solid"
+            termlist.style.borderRadius = "5px"
+            termlist.style.display = 'inline-block'
+            termlist.style.marginRight='78%' // ensures the termlist is at the left
+            termlist.style.verticalAlign='top'
+            termlist.style.paddingLeft='0px'
+            termlist.style.paddingRight='5px'
+            termlist.style.listStylePosition='inside'
+            reviewer.appendChild(termlist)
+        }
+        
+        function subject(given){
+            table.classList.add("hide");
+            reviewer.innerHTML = "Loading "+given+"..."
+            setTimeout(() => review(given), 360);
+        }
+    </script>
 </body>
 </html>

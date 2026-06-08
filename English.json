@@ -1,0 +1,17 @@
+{
+    "Title":"Lorem Ipsum",
+    "term":[
+        {
+            "Chapters":[
+                {
+                    "Title":"English Coo!",
+                    "htmltext":"<p style='text-align:justify;'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas augue ipsum, iaculis id lorem a, commodo placerat dui. Ut ornare, metus nec ultricies semper, purus lorem fermentum eros, sed egestas sem eros ut augue. Nunc sollicitudin metus ut blandit cursus. Vestibulum semper, erat et malesuada bibendum, arcu lacus facilisis augue, id dignissim magna tortor eleifend libero. Sed quis diam a ipsum volutpat molestie. Sed tincidunt nisi ut lacinia varius. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>"
+                },
+                {
+                    "Title":"English Coo!",
+                    "htmltext":""
+                }
+            ]
+        }
+    ]
+}
