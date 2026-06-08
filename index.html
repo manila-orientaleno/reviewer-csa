@@ -1,10 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@200;350&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head><body>
-    <h1>Hello, World!</h1>
+    <style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+    }
+    .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+    .strike{
+        text-decoration: line-through;
+    }
+    .subject{
+        border:1px solid gray;
+        border-radius:10px;
+        vertical-align:middle;
+        margin-bottom:10px;
+        margin-top:10px;
+        transition:padding 1s
+    }
+    .working{
+        font-weight:bold;
+    }
+    .center{
+        text-align:center;
+    }
+    .subject:hover{
+        padding:3%;
+        transition:padding 1s;
+        cursor:pointer;
+    }
+    @media (max-width: 600px) {
+        table, thead, tbody, tr{
+            display: block;
+            width: 100%;
+        }
+        .subject{
+            display:inline-block;
+            width:50%;
+            margin-left:25%;
+            margin-right:25%;
+            box-sizing:border-box;
+        }
+        .subjectparent{
+            display:block;
+            width:100%;
+            margin-left:0%;
+            margin-right:0%;
+        }
+    }
+    @media (min-width:600px){
+        .subject{
+            display:inline-block;
+            width:24%;
+            margin-left:5%;
+            margin-right:5%;
+            box-sizing:border-box;
+        }
+        .subjectparent{
+            display:block;
+            width:75%;
+            margin-left:25%;
+            margin-right:25%;
+        }
+    }
+    .Filipino{
+        background-image:url("https://upload.wikimedia.org/wikipedia/commons/3/3f/Flag_of_the_Philippines_%28vertical_display%29.svg");
+        background-size:cover;
+        background-repeat: no-repeat;
+    }
+    </style>
+</head>
+<body>
+    <h1 class="title">The Augustine Reviewer</h1>
+    <div style="overflow-x:auto;">
+    <table style="border-collapse:collapse; width:100%">
+        <tr class="subjectparent"> <!--language et cetera-->
+            <td class="subject">
+                <h1 class="center">English</h1>
+                <ul>
+                    <li class="working">Term 1</li>
+                    <li class="strike">Term 2</li>
+                    <li class="strike">Term 3</li>
+                </ul>
+            </td>
+            <td class="subject Filipino">
+                <h1 class="center">Filipino</h1>
+                <ul>
+                    <li class="working">Term 1</li>
+                    <li class="strike">Term 2</li>
+                    <li class="strike">Term 3</li>
+                </ul>
+            </td>
+            <td class="subject">
+                <h1 class="center">Science</h1>
+                <ul>
+                    <li class="working">Term 1</li>
+                    <li class="strike">Term 2</li>
+                    <li class="strike">Term 3</li>
+                </ul>
+            </td>
+            <td class="subject">
+                <h1 class="center">Math</h1>
+                <ul>
+                    <li class="working">Term 1</li>
+                    <li class="strike">Term 2</li>
+                    <li class="strike">Term 3</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    </div>
 </body>
 </html>
