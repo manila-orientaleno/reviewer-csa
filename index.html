@@ -108,7 +108,6 @@
         transform: translateY(-15px);
         transition: opacity 1.2s ease, transform 1.2s ease;
     }
-
     .chapterlistparts.show {
       opacity: 1;
       transform: translateY(0);
@@ -161,6 +160,7 @@
         var table = document.getElementById("Tableholder");
         var reviewer = document.getElementById("reviewer");
         var rTitle, rPG, termlist, chapterlist, chaptertext; //Reviewers Title and Paragraph, which will accept HTML as input, that would be a security risk but not really because you cant hack anything here
+        //only set variables globally for stuff that appears once, i.e. termlist/chaptertext, but for now only ONE CHAPTERLIST, i may change depending on my opinion
         var showingchapter=false;
         async function review(given){
             table.remove();
@@ -171,23 +171,27 @@
             termlist = document.createElement("ul");
             for (let i = 0; i < data.term.length; i++) { //creates the terms
                 let term = document.createElement('li');
-                term.innerHTML = "Term "+Number(i+1)+" ▲";
+                let termText = document.createElement('span'); //thats the part that shows the Term
+                termText.textContent = "Term "+Number(i+1)+" ↑";
+                term.appendChild(termText);
                 term.style.cursor = "pointer"
                 term.setAttribute('term',i);
                 term.addEventListener('click',() => { //term click event
-                    if (event.target === event.currentTarget && !term.getAttribute("showingchapterlist")) {
+                    if (!term.getAttribute("showingchapterlist")) { //if term is clicked and not showing chapter
                         console.log('term '+i+' was clicked');
-                        term.setAttribute('showingchapterlist', true); //prevents duplication of chapters
+                        term.setAttribute('showingchapterlist',true); //prevents duplication of chapters
+                        termText.textContent = "Term "+Number(i+1)+" ↓"; //shows Term # with down character
                         chapterlist = document.createElement("ul")
                         for (let chapindex = 0; chapindex < data.term[i].Chapters.length; chapindex++) { //creates chapters
                             let chaptername = data.term[i].Chapters[chapindex].Title
                             let chapterlistpart = document.createElement("li");
                             chapterlistpart.innerHTML = chaptername;
-                            chapterlistpart.style.paddingLeft='0'
-                            chapterlistpart.style.listStylePosition='inside'
+                            chapterlistpart.style.paddingLeft='2'
+                            chapterlistpart.style.textAlign = "left"
+                            chapterlistpart.style.listStylePosition='outside'
                             chapterlistpart.classList.add('chapterlistparts')
                             chapterlistpart.addEventListener('click',() => {
-                                if (event.target === event.currentTarget && !chapterlistpart.getAttribute("showingchaptertext")){
+                                if (event.target === event.currentTarget && !chapterlistpart.getAttribute("showingchaptertext")){ //detect chapter list click
                                     if(showingchapter==true){//if different chapter, change text
                                         chapterlistpart.setAttribute("showingchaptertext",true);
                                         chaptertext.innerHTML = data.term[i].Chapters[chapindex].htmltext
@@ -213,7 +217,33 @@
                                 chapterlistpart.classList.add('show')
                             }, 10);
                         }
+                        chapterlist.style.maxHeight = '0px';
+                        chapterlist.style.overflow = 'hidden';
+                        chapterlist.style.transition = 'max-height 0.5s ease'; //i used ai for this what the hell is with CSS
                         term.appendChild(chapterlist); //add chapter list
+                        setTimeout(() => {
+                            chapterlist.style.maxHeight = chapterlist.scrollHeight + 'px';
+                        }, 10);
+                    } else if (event.target === event.currentTarget || event.target === termText && term.getAttribute("showingchapterlist")) { //if click term and is showing chapter list
+                        //reviewer.removeChild(chaptertext); hides chaptertext when hiding chapter list
+                        term.removeAttribute("showingchapterlist")
+                        termText.textContent = "Term "+Number(i+1)+" ↑";
+                        setTimeout(() => {
+                            chapterlist.style.maxHeight = chapterlist.scrollHeight + 'px'; // set current height
+                            setTimeout(() => {
+                                chapterlist.style.maxHeight = '0px'; // animate to 0
+                                chapterlist.style.overflow = 'hidden';
+                                chapterlist.style.transition = 'max-height 0.5s ease';
+                                [...chapterlist.children].forEach(child=>{
+                                    child.classList.remove('show')
+                                    setTimeout(() => {
+                                        child.remove();
+                                    }, 500);
+                                })
+                            }, 20);
+                        }, 10);
+                        //term.removeChild(chapterlist) //removes the chapterlist of said term
+
                     }
                 })
                 termlist.appendChild(term); //add term list
