@@ -1,0 +1,52 @@
+#separator:tab
+#html:true
+the two parts of compound finals	1 main vowel<br>1-2 secondary vowel or 1 secondary w/ nasal (n/ng)
+which initial vowels are stressed	a e o
+which initial vowels come before main vowels	i u ű
+what stress are vowels/nasal consonants when they come after main vowels	unstressed
+how is iu pronounced	iou
+how is ui pronounced	uei
+what does I become if there is no initial consonant before it	semi-vowel Y<br>eg. ia=ya, ie=ye, iao=yao, iu=you, ian=yan, iang=yang<br>
+if there is an in and ing, what to put before it	Y = yin, ying
+if there is no initial consonant before ű, add _ and _	add y, drop umlaut = yu, yuan, yue, yun
+u becomes w if	no initial behind it, eg. wa, wai, wan, wang, wei, wen, weng, wo, u becomes wu
+ueng is written _ if preceded by an initial	written ong, eg. tong, dong, nong, long<br>without initial it is weng
+apostrophe (') is placed to	seperate two syllables, often with connecting vowels
+first consonant final group	ai, ei, ao, ou
+second consonant final group	an en ang eng ong
+third&nbsp;consonant final group	ia iao ie iu* ian in iang ing iong<br><br>iu is pronounced iou
+fourth consonant final group	ua uo uai ui* uan un** uang ueng<br><br>*ui is pronounced uei, main vowel e omitted<br>**main vowel e is omitted, un=uen
+fifth consonant final group	űe űan űn
+sixth consonant final group	er
+[sound:buo.mp3]	b is pronounced unvoiced, like p in speak
+[sound:po.mp3]	p is aspirated and voiceless, like p in pork
+[sound:mo.mp3]	m is the same as English
+[sound:fo.mp3]	same as English
+[sound:con1.mp3]	initial consonant group 1
+[sound:co2.mp3]	consonant group 2
+consonant group 2	[sound:co2.mp3]
+[sound:co3.mp3]	consonant group 3
+consonant group 3	[sound:co3.mp3]
+[sound:co4.mp3]	consonant group 4
+consonant group 4	[sound:co4.mp3]
+[sound:co5.mp3]	consonant group 5
+consonant group 5	[sound:co5.mp3]
+[sound:co6.mp3]	consonant group 6
+consonant group 6	[sound:co6.mp3]
+[sound:do.mp3]	d is pronounced with tongue touching upper gum, raised more than English.<br><br>voiceless, like t in stand<br>simple finals/compound finals a,i,e,u can be put befoe it
+[sound:to.mp3]	t is pronounced with tongue touching upper gum, raised more than English.<br><br>voiced like t in tea<br>simple final/compound finals a,e,i,u can be put before it
+[sound:no.mp3]	n is pronounced with tongue touching upper gum, raised more than English.<br><br>n is nasal<br>simple final/compound final a,i,e,u, and ű
+[sound:luo.mp3]	l is pronounced with tongue touching upper gum, raised more than English.<br><br>l is with the tip of the tongue touches the palate<br>simple finals/compound finals a,i,e,u and ű
+[sound:go.mp3]	when pronouncing g, raise the back of tongue against soft palate<br><br>g is unaspirated and voiceless, sounding like k in sky<br>simple final/compound a,e,u
+[sound:ko.mp3]	when pronouncing k, raise the back of tongue against soft palate<br><br>k is aspirated and voiceless, sounding like k in kite<br>simple final/compound a,e,u
+[sound:ho.mp3]	when pronouncing h, raise the back of tongue against soft palate<br><br>h is voiceless, unlike in English, the frictions noticeable<br>simple final/compound a,e,u
+[sound:ji.mp3]	when pronouncing j, raise flat center of tongue to roof of the mouth<br>position tip of tongue to back of bottom, then loosen tongue and let air squeeze out<br><br>it is unaspirated and voiceless, pull corners of the mouth straight back to pronounce it<br><br>final vowel/compound i ü BUT jü is spelled ju
+[sound:qi.mp3]	when pronouncing q, raise flat center of tongue to roof of the mouth<br>position tip of tongue to back of bottom, then loosen tongue and let air squeeze out<br><br>it is aspirated and voiceless, pull corners of the mouth straight back to pronounce it<br><br>final vowel/compound i ü BUT qü is spelled qu
+[sound:xi.mp3]	when pronouncing x, raise flat center of tongue NEAR to the roof of the mouth<br>position tip of tongue to back of bottom, then loosen tongue and let air squeeze out<br><br>it is aspirated and voiceless, pull corners of the mouth straight back to pronounce it<br><br>final vowel/compound i ü BUT xü is spelled xu
+[sound:zi.mp3]	z is pronounced with back of upper teeth with the tongue<br><br>z is similar to ds in lids<br>simple final/compound a e u and front apical i
+[sound:ci.mp3]	c is pronounced with back of upper teeth with the tongue<br><br>c is similar to ts in students, aspirated<br>simple final/compound a e u and front apical i
+[sound:si.mp3]	s is pronounced with back of upper teeth with the tongue<br><br>s is similar to s in english<br><br>simple final/compound a e u and front apical i
+[sound:zh.mp3]	zh pronounced with curling tip of tongue against hard palate, loosen and let air squeeze out<br><br>it is unaspirated and voiceless<br>compound vowel/final a e u and back apical i, compound final with i not allowed
+[sound:chi.mp3]	zh pronounced with curling tip of tongue against hard palate, loosen and let air squeeze out<br><br>it is aspirated and voiceless<br>compound vowel/final a e u and back apical i, compound final with i not allowed
+[sound:ri.mp3]	r pronounced with curling tip of tongue against hard palate, loosen and let air squeeze out<br><br>it is aspirated and voiced<br>compound vowel/final a e u and back apical i, compound final with i not allowed<br>ri is just r
+[sound:shi.mp3]	sh pronounced with curling tip of tongue NEAR hard palate, loosen and let air squeeze out<br><br>it is unaspirated and voiceless<br>compound vowel/final a e u and back apical i, compound final with i not allowed

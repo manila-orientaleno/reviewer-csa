@@ -4,7 +4,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@200;350&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <title>the Augustine Reviewer</title>
     <style>
     body {
         font-family: 'Roboto', sans-serif;
@@ -115,7 +116,7 @@
     </style>
 </head>
 <body>
-    <h1 class="title">The Augustine Reviewer</h1>
+    <h1 class="title" title="pronounced as au̯.ɡʊsˈtiː.nɛ lolololol">The Augustine Reviewer</h1>
     <div id="reviewer" class="center"></div>
     <div style="overflow-x:auto;" class="unhidden" id="Tableholder">
     <table style="border-collapse:collapse; width:100%">
@@ -159,7 +160,7 @@
         
         var table = document.getElementById("Tableholder");
         var reviewer = document.getElementById("reviewer");
-        var rTitle, rPG, termlist, chapterlist, chaptertext; //Reviewers Title and Paragraph, which will accept HTML as input, that would be a security risk but not really because you cant hack anything here
+        var rTitle, rPG, termlist, chaptertext, subjectreturn, AnkiNotes; //Reviewers Title and Paragraph, which will accept HTML as input, that would be a security risk but not really because you cant hack anything here
         //only set variables globally for stuff that appears once, i.e. termlist/chaptertext, but for now only ONE CHAPTERLIST, i may change depending on my opinion
         var showingchapter=false;
         async function review(given){
@@ -170,22 +171,33 @@
             reviewer.innerHTML="</div><h2 class='center'>"+data.Title+"</h1>"
             termlist = document.createElement("ul");
             for (let i = 0; i < data.term.length; i++) { //creates the terms
+                let chapterlist = document.createElement("ul")
                 let term = document.createElement('li');
                 let termText = document.createElement('span'); //thats the part that shows the Term
                 termText.textContent = "Term "+Number(i+1)+" ↑";
                 term.appendChild(termText);
                 term.style.cursor = "pointer"
+                term.style.paddingLeft = "10"
+                term.style.listStylePosition = "inside"
+                term.style.textAlign = "left"
                 term.setAttribute('term',i);
                 term.addEventListener('click',() => { //term click event
                     if (!term.getAttribute("showingchapterlist")) { //if term is clicked and not showing chapter
-                        console.log('term '+i+' was clicked');
+                        console.log('term '+Number(i+1)+' was clicked');
                         term.setAttribute('showingchapterlist',true); //prevents duplication of chapters
                         termText.textContent = "Term "+Number(i+1)+" ↓"; //shows Term # with down character
-                        chapterlist = document.createElement("ul")
-                        for (let chapindex = 0; chapindex < data.term[i].Chapters.length; chapindex++) { //creates chapters
+                        for (let chapindex = 0; chapindex < data.term[i].Chapters.length; chapindex++) { 
+                        //creates chapters
                             let chaptername = data.term[i].Chapters[chapindex].Title
                             let chapterlistpart = document.createElement("li");
-                            chapterlistpart.innerHTML = chaptername;
+                            if(Object.hasOwn(data.term[i].Chapters[chapindex], "Anki")){ //HAS ANKI NOTES
+                                chapterlistpart.innerHTML = chaptername+'<img src="anki.jpeg" style="height: 1em; vertical-align: middle;"> ';
+                                chapterlistpart.setAttribute("hasAnki",true);
+                                //adds the chapter name AND Anki LOGO
+                            } else { //NO ANKI
+                                chapterlistpart.innerHTML = chaptername; 
+                                //adds the chapter name only
+                            }
                             chapterlistpart.style.paddingLeft='2'
                             chapterlistpart.style.textAlign = "left"
                             chapterlistpart.style.listStylePosition='outside'
@@ -203,8 +215,9 @@
                                     chaptertext.style.marginRight='10%'
                                     chapterlistpart.setAttribute("showingchaptertext",true);
                                     chaptertext.innerHTML = data.term[i].Chapters[chapindex].htmltext
-                                    termlist.style.marginRight='3.8%' // RETURNS THE LIST BACK TO LEFT
-                                    console.log('Chapter list '+chapindex+' was clicked')
+                                    termlist.style.marginLeft='0'
+                                    termlist.style.marginRight='5%' // RETURNS THE LIST BACK TO LEFT
+                                    console.log('Chapter '+chaptername+' was clicked')
                                     showingchapter=true;
                                     [...chapterlist.children].filter(child => child !== chapterlistpart).forEach(sibling=>{
                                         sibling.removeAttribute("showingchaptertext")
@@ -254,16 +267,63 @@
             termlist.style.display = 'inline-block'
             termlist.style.marginRight='78%' // ensures the termlist is at the left
             termlist.style.verticalAlign='top'
-            termlist.style.paddingLeft='0px'
+            termlist.style.paddingLeft='4px'
             termlist.style.paddingRight='5px'
             termlist.style.listStylePosition='inside'
+
+            //create return to the subject table
+            subjectreturn = document.createElement('li');
+            subjectreturn.style.cursor = "pointer"
+            subjectreturn.style.paddingLeft = "10"
+            subjectreturn.style.listStylePosition = "inside"
+            subjectreturn.style.textAlign = "left"
+            subjectreturn.textContent = "return to subject";
+            subjectreturn.setAttribute('onclick','location.reload()')
             reviewer.appendChild(termlist)
+            termlist.appendChild(subjectreturn)
         }
         
         function subject(given){
             table.classList.add("hide");
             reviewer.innerHTML = "Loading "+given+"..."
             setTimeout(() => review(given), 360);
+        }
+        async function AnkiParse(ankitextlink, removedupes){//if anki notes are one of those back/front to front/back duplicates, and if reversedupe is set to true, then dupes will be removed
+            var ParseAnki = await fetch('anki/'+ankitextlink);
+            ParseAnki = await ParseAnki.text();
+            ParseAnki = ParseAnki.split("\n")
+            AnkiNotes = [];
+            var i = 0;
+            for(let line of ParseAnki) {
+                line = line.split('	');
+                await AnkiNotes.push({
+                    front:line[0],
+                    back:line[1]
+                });
+                //console.log(line[0], i)
+                if(line[0].startsWith("#") || line==''){
+                    delete ParseAnki[i];//deletes the #
+                    AnkiNotes.splice(i,1) //deletes, it took me around an hour to realize this and the waste of all my claude ai for the day
+                } else { //normal
+                    i++
+                }
+            };
+            if(removedupes){ //dupes mean notes which have the front back switched - i often use it so thats why
+                var duplicatenotelist = [];
+                for(let originalnote = 0; originalnote < AnkiNotes.length; originalnote++){
+                    for(let notecheck = originalnote; notecheck < AnkiNotes.length; notecheck++){
+                        if(duplicatenotelist.includes(notecheck)) continue; //skips known duplicates
+                        if(AnkiNotes[originalnote].front==AnkiNotes[notecheck].back && AnkiNotes[originalnote].back==AnkiNotes[notecheck].front){
+                            duplicatenotelist.push(notecheck)
+                        }
+                    }
+                }
+                duplicatenotelist.reverse();
+                duplicatenotelist.forEach(duplicated => {
+                    AnkiNotes.splice(duplicated-1,1)
+                });
+                console.log(AnkiNotes)
+            }
         }
     </script>
 </body>

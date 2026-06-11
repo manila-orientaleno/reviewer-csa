@@ -1,0 +1,72 @@
+#separator:tab
+#html:true
+dipá	arm span, length of both arms outstretched
+arm span, length of both arms outstretched	dipá
+maakusahan	to be accused of (object focus)
+to be accused of (object focus)	maakusahan
+sedisyon	sedition, insurrection, inciting rebellion
+sedition, insurrection, inciting rebellion	sedisyon
+pagiging	gerundifier - turns adjective to verbal noun<br>similar to -ness or -ity<br>
+gerundifier - turns adjective to verbal noun<br>similar to -ness or -ity<br>	pagiging
+kilusan	"political movement, physical movement<br>""Kilusang Propaganda"""
+"political movement, physical movement<br>""Kilusang Propaganda"""	kilusan
+paggawa	labor, work
+labor, work	paggawa
+kilusang paggawa	labor movement
+labor movement	kilusang paggawa
+pagsusulong	advancement, promotion, advocacy
+advancement, promotion, advocacy	pagsusulong
+karapatan	rights, entitlements
+rights, entitlements	karapatan
+matinag	to be emotionally shaken / affected
+to be emotionally shaken / affected	matinag
+sa halíp	instead (adverb)
+instead (adverb)	sa halíp
+pan<u>u</u>lat	writing instrument (i.e. pen)
+writing instrument (i.e. pen)	pan<u>u</u>lat
+makapaglahad	to be able to lay out (i.e. showing your palm, or revealing info) or express<br><br>maka - to be able to<br>pag - turns it into a noun
+to be able to lay out (i.e. showing your palm, or revealing info) or express<br><br>maka - to be able to<br>pag - turns it into a noun	makapaglahad
+panitikan	literature
+literature	panitikan
+tumututol	is opposing, resisting, protesting, objecting<br>inf. tumutol
+is opposing, resisting, protesting, objecting<br>inf. tumutol	tumututol
+pang-aapi	for oppressing/oppression (adj/noun)
+for oppressing/oppression (adj/noun)	pang-aapi
+kawalang-katarungan	"injustice (lit. ""absence of justice"")"
+"injustice (lit. ""absence of justice"")"	kawalang-katarungan
+laylayan	fringe/margin (poetic) edge of a garment
+fringe/margin (poetic) edge of a garment	laylayan
+tinig	voice
+voice	tinig
+api	oppressed (person)
+oppressed (person)	api
+taglay	containing, possessing (adjective/pseudo-verb)
+containing, possessing (adjective/pseudo-verb)	taglay
+matitindi	intense, grave, fierce, acute
+intense, grave, fierce, acute	matitindi
+katiwalian	corruption
+corruption	katiwalian
+paniniil sa karapatang pantao	oppression/trampling of human rights<br><br>pan-tao<br>pan = pertaining to
+oppression/trampling of human rights<br><br>pan-tao<br>pan = pertaining to	paniniil sa karapatang pantao
+matup<u>á</u>d	to fulfill or achieve something (verb)
+to fulfill or achieve something (verb)	matup<u>á</u>d
+hang<u>a</u>rin	desire, intent, quest
+desire, intent, quest	hang<u>a</u>rin
+konsensiya	conscience
+conscience	konsensiya
+paninindigan	conviction, stance
+conviction, stance	paninindigan
+nakatuon	focused (adjective or verb)
+focused (adjective or verb)	nakatuon
+panlipunang pagbabago	societal transformation<br><br>pan turns a noun to adjective i.e. lipunan/society to panlipunan/societal
+societal transformation<br><br>pan turns a noun to adjective i.e. lipunan/society to panlipunan/societal	panlipunang pagbabago
+pagbabago	transformation
+transformation	pagbabago
+kinilala	to be known as
+to be known as	kinilala
+naitanghal	recognized/proclaimed<br>na-<br>i- object-focus, the subject is the one being presented<br>tanghal - to present, proclaim, elevate
+recognized/proclaimed<br>na-<br>i- object-focus, the subject is the one being presented<br>tanghal - to present, proclaim, elevate	naitanghal
+sining	arts, the arts<br>i.e. sining biswal / visual arts
+arts, the arts<br>i.e. sining biswal / visual arts	sining
+bilangguan	prison
+prison	bilangguan

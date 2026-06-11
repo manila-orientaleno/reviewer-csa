@@ -5,10 +5,35 @@
             "Chapters":[
                 {
                     "Title":"English Coo!",
+                    "Anki":"lorem-ipsum1.txt",
                     "htmltext":"<p>hi.</p>"
                 },
                 {
                     "Title":"Why Daniel Caesar is better than Julius Caesar",
+                    "htmltext":"<p style='text-align:justify;'>gaul is made of many country and stuff <br> i love money <br> give to csa waht is csas</p>"
+                },
+                {
+                    "Title":"lowk peed mysef",
+                    "htmltext":"<p style='text-align:justify;'>so you know</p>"
+                },
+                {
+                    "Title":"yet another title",
+                    "htmltext":"<p style='text-align:justify;'>M.Torres was not here</p>"
+                },
+                {
+                    "Title":"test",
+                    "htmltext":"<p style='text-align:justify;'>hee hee hee ha!</p>"
+                }
+            ],
+            "Anki":"lorem-ipsum.txt"
+        },{
+            "Chapters":[
+                {
+                    "Title":"term2 is cooon!",
+                    "htmltext":"<p>hi.</p>"
+                },
+                {
+                    "Title":"hey how r u ",
                     "htmltext":"<p style='text-align:justify;'>gaul is made of many country and stuff <br> i love money <br> give to csa waht is csas</p>"
                 },
                 {
